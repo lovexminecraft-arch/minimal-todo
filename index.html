@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal To-Do</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="header">
+        <div>
+          <h1>To-Do</h1>
+          <p class="sub">極簡清單，資料儲存在你的瀏覽器（localStorage）。</p>
+        </div>
+        <button id="exportBtn" class="btn ghost" title="匯出 JSON">匯出</button>
+      </header>
+
+      <section class="card">
+        <form id="todoForm" class="row" autocomplete="off">
+          <input
+            id="todoInput"
+            class="input"
+            type="text"
+            placeholder="輸入一個待辦…（Enter 新增）"
+            maxlength="120"
+            required
+          />
+          <button class="btn primary" type="submit">新增</button>
+        </form>
+
+        <div class="row row-between tools">
+          <div class="seg" role="tablist" aria-label="filter">
+            <button class="seg-btn is-active" data-filter="all" type="button">全部</button>
+            <button class="seg-btn" data-filter="active" type="button">進行中</button>
+            <button class="seg-btn" data-filter="done" type="button">已完成</button>
+          </div>
+
+          <div class="right">
+            <input id="searchInput" class="input small" type="search" placeholder="搜尋…" />
+            <button id="clearDoneBtn" class="btn ghost" type="button">清空已完成</button>
+          </div>
+        </div>
+
+        <ul id="todoList" class="list" aria-live="polite"></ul>
+
+        <footer class="footer">
+          <span id="stats" class="muted">0 項</span>
+          <button id="resetBtn" class="btn danger ghost" type="button" title="刪除所有待辦">
+            全部清空
+          </button>
+        </footer>
+      </section>
+
+      <section class="card hint">
+        <details>
+          <summary>小提示</summary>
+          <ul>
+            <li>點左邊勾勾可完成 / 取消完成</li>
+            <li>雙擊文字可快速編輯（Enter 儲存、Esc 取消）</li>
+            <li>「匯出」會下載 JSON（可備份）</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
